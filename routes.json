@@ -1,0 +1,74 @@
+{
+	"home":
+	{
+		"url": "/",
+		"controller": "IndexController",
+		"templateUri": "/_assets/templates/modules/home.volt"
+	},
+    "services.on-demand": 
+    {
+    	"url": "/services/talent-on-demand",
+        "controller": "IndexController",
+        "templateUri": "/_assets/templates/modules/on-demand.volt"
+    },
+    "services.contingent-workforce-solutions": 
+    {
+    	"url": "/services/contingent-workforce-solutions",
+        "controller": "IndexController",
+        "templateUri": "/_assets/templates/modules/contingent-workforce-solutions.volt"
+    },
+    "services.recruitment-process-outsourcing": 
+    {
+    	"url": "/services/recruitment-process-outsourcing",
+        "controller": "IndexController",
+        "templateUri": "/_assets/templates/modules/recruitment-process-outsourcing.volt"
+    },
+    "services.executive-search": 
+    {
+    	"url": "/services/executive-search",
+        "controller": "IndexController",
+        "templateUri": "/_assets/templates/modules/executive-search.volt"
+    },
+    "about": 
+    {
+    	"url": "/about-altablue/",
+        "controller": "IndexController",
+        "templateUri": "/_assets/templates/modules/about-altablue.volt"
+    },
+    "social-responsibility": 
+    {
+    	"url": "/social-responsibility/",
+        "controller": "IndexController",
+        "templateUri": "/_assets/templates/modules/social-responsibility.volt"
+    },
+    "contact": 
+    {
+        "url": "/contact/",
+        "controller": "IndexController",
+        "templateUri": "/_assets/templates/modules/contact.volt"
+    },
+    "sectors": 
+    {
+    	"url": "/sectors/",
+        "controller": "IndexController",
+        "templateUri": "/_assets/templates/modules/sectors.volt"
+    },
+    "legal.terms": 
+    {
+    	"url": "/legal/terms",
+        "controller": "IndexController",
+        "templateUri": "/_assets/templates/modules/terms.volt"
+    },
+    "legal.privacy": 
+    {
+    	"url": "/legal/privacy",
+        "controller": "IndexController",
+        "templateUri": "/_assets/templates/modules/privacy.volt"
+    },
+    "legal.cookies": 
+    {
+    	"url": "/legal/cookies-policy",
+        "controller": "IndexController",
+        "templateUri": "/_assets/templates/modules/cookie-policy.volt"
+    }
+}
