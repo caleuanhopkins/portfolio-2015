@@ -78,7 +78,8 @@ gulp.task('libscripts', function() {
             'app/js/libs/angular-ui-select/dist/select.js',
             'app/js/libs/angular-ui-utils/ui-utils.js',
             'app/js/libs/angular-ui-utils/ui-utils-ieshiv.js',
-            'app/js/libs/angular-loading-bar/build/loading-bar.js'
+            'app/js/libs/angular-loading-bar/build/loading-bar.js',
+            'app/js/libs/headroom.js/dist/headroom.min.js'
         ])
         .pipe(jshint())
         .pipe(concat('libs.js'))

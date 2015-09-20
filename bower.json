@@ -19,22 +19,23 @@
     "tests"
   ],
   "dependencies": {
-    "react": "~0.13.3",
-    "bootstrap": ">=3",
     "angular": "=1.3.15",
-    "angular-resource": "~1.3.15",
     "angular-animate": ">=1.2",
-    "angular-mocks": ">=1.2",
     "angular-bootstrap": "~0.12.1",
-    "angular-ui-utils": "=0.2.3",
-    "angular-ui-router": "~0.2.14",
-    "angular-sanitize": ">=1.3.15",
     "angular-cookies": "=1.3.15",
     "angular-ladda": "~0.2.2",
-    "angular-touch": "~1.3.15",
-    "ladda": "~0.9.8",
+    "angular-loading-bar": "~0.7.1",
+    "angular-mocks": ">=1.2",
+    "angular-resource": "~1.3.15",
     "angular-route": "~1.3.15",
+    "angular-sanitize": ">=1.3.15",
+    "angular-touch": "~1.3.15",
+    "angular-ui-router": "~0.2.14",
     "angular-ui-select": "*",
-    "angular-loading-bar": "~0.7.1"
+    "angular-ui-utils": "=0.2.3",
+    "bootstrap": ">=3",
+    "headroom.js": "~0.7.0",
+    "ladda": "~0.9.8",
+    "react": "~0.13.3"
   }
 }

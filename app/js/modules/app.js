@@ -1,53 +1,68 @@
+'use strict';
 
-var FilteredList = React.createClass({
-  filterList: function(event){
-    var updatedList = this.state.initialItems;
-    updatedList = updatedList.filter(function(item){
-      return item.toLowerCase().search(
-        event.target.value.toLowerCase()) !== -1;
-    });
-    this.setState({items: updatedList});
-  },
-  getInitialState: function(){
-     return {
-       initialItems: [
-         "Apples",
-         "Broccoli",
-         "Chicken",
-         "Duck",
-         "Eggs",
-         "Fish",
-         "Granola",
-         "Hash Browns"
-       ],
-       items: []
-     }
-  },
-  componentWillMount: function(){
-    this.setState({items: this.state.initialItems})
-  },
-  render: function(){
-    return (
-      <div className="filter-list">
-        <input type="text" placeholder="Search" onChange={this.filterList}/>
-      <List items={this.state.items}/>
-      </div>
-    );
-  }
+var $urlRouterProviderRef = null;
+var $stateProviderRef = null;
+var $locationProviderRef = null;
+
+angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfiguration.applicationModuleVendorDependencies);
+
+angular.module(ApplicationConfiguration.applicationModuleName).config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', '$uiViewScrollProvider',
+	function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $uiViewScrollProvider) {
+    	$urlRouterProviderRef = $urlRouterProvider;
+    
+    	$locationProvider.html5Mode(true);
+    	$uiViewScrollProvider.useAnchorScroll();
+    	$stateProviderRef = $stateProvider;
+    	$locationProviderRef = $locationProvider;
+
+		$urlRouterProvider.rule(function($injector, $location) {
+	        if($location.protocol() === 'file')
+	            return;
+
+	        var path = $location.path()
+	        // Note: misnomer. This returns a query object, not a search string
+	            , search = $location.search()
+	            , params
+	            ;
+
+	        // check to see if the path already ends in '/'
+	        if (path[path.length - 1] === '/') {
+	            return;
+	        }
+
+	        // If there was no search string / query params, return with a `/`
+	        if (Object.keys(search).length === 0) {
+	            return path + '/';
+	        }
+
+	        // Otherwise build the search string and return a `/?` prefix
+	        params = [];
+	        angular.forEach(search, function(v, k){
+	            params.push(k + '=' + v);
+	        });
+	        return path + '/?' + params.join('&');
+	    });
+
+	}
+]);
+
+angular.module(ApplicationConfiguration.applicationModuleName).config(['$interpolateProvider','$routeProvider','$locationProvider','$resourceProvider',
+	function($interpolateProvider,$routeProvider,$locationProvider,$resourceProvider) {
+  		$interpolateProvider.startSymbol('[{[');
+ 	 	$interpolateProvider.endSymbol(']}]');
+ 	 	$resourceProvider.defaults.stripTrailingSlashes = true;
+ 	 }
+]);
+
+angular.module(ApplicationConfiguration.applicationModuleName).config(['$urlMatcherFactoryProvider',
+	function ($urlMatcherFactoryProvider) {
+	  $urlMatcherFactoryProvider.caseInsensitive(true);
+	  $urlMatcherFactoryProvider.strictMode(true);
+	}
+]);
+
+angular.element(document).ready(function() {
+	if (window.location.hash === '#_=_') window.location.hash = '#!';
+
+	angular.bootstrap(document, [ApplicationConfiguration.applicationModuleName]);
 });
-
-var List = React.createClass({
-  render: function(){
-    return (
-      <ul>
-      {
-        this.props.items.map(function(item) {
-          return <li key={item}>{item}</li>
-        })
-       }
-      </ul>
-    )  
-  }
-});
-
-React.render(<FilteredList/>, document.getElementById('mount-point'));
