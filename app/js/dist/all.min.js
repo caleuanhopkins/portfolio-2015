@@ -177,16 +177,27 @@ angular.module('core').directive('parallax', function () {
     return {
       restrict: 'E',
       link: function headroom(scope, element, attrs){
-        console.log(element.html());
         var myElement = document.querySelector("header");
-        console.log(myElement);
         // construct an instance of Headroom, passing the element
         var headroom  = new Headroom(myElement);
         // initialise
-        headroom.init(); 
+        headroom.init();
+
+        var menuToggle = $('#js-centered-navigation-mobile-menu').unbind();
+        $('#js-centered-navigation-menu').removeClass("show");
+        
+        menuToggle.on('click', function(e) {
+          e.preventDefault();
+          $('#js-centered-navigation-menu').slideToggle(function(){
+            if($('#js-centered-navigation-menu').is(':hidden')) {
+              $('#js-centered-navigation-menu').removeAttr('style');
+            }
+          });
+        });
       }
     }
 });
+
 'use strict';
 
 //Articles service used for communicating with the articles REST endpoints
